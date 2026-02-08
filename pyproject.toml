@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "notebook-cleaner"
+version = "1.0.0"
+description = "Convert Jupyter notebooks to clean markdown optimized for LLM consumption"
+authors = [{ name = "Kalhar Pandya", email = "kalharpandya38@gmail.com" }]
+requires-python = ">=3.7"
+readme = "README.md"
+license = { text = "MIT" }
+keywords = [
+    "jupyter",
+    "notebook",
+    "ipynb",
+    "markdown",
+    "LLM",
+    "LLM-friendly",
+    "AI",
+    "context-window",
+    "notebook-cleaner",
+    "size-reduction",
+    "token-optimization",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering",
+]
+
+[project.scripts]
+shrink-notebook = "shrink_notebook:main"
+
+[tool.setuptools]
+py-modules = ["shrink_notebook"]
