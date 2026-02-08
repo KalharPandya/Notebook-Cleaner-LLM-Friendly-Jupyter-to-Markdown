@@ -331,11 +331,12 @@ def find_notebooks(path: Path, skip_existing: bool = False) -> List[Tuple[Path, 
     for root, dirs, files in os.walk(path):
         root_path = Path(root)
         
-        # Skip hidden directories
-        dirs[:] = [d for d in dirs if not d.startswith('.')]
+        # Skip hidden directories and Mac metadata directories
+        dirs[:] = [d for d in dirs if not d.startswith('.') and d != '__MACOSX']
         
         for file in files:
-            if file.endswith('.ipynb'):
+            # Skip Mac resource fork files and process only .ipynb
+            if file.endswith('.ipynb') and not file.startswith('._'):
                 input_path = root_path / file
                 output_path = root_path / f"{input_path.stem}_cleaned.md"
                 
